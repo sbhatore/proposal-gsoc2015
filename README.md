@@ -1,15 +1,4 @@
-##Contact Information
-
-* **Name:** Siddharth Bhatore
-* **Email Address:** sbhatore95@gmail.com
-* **Alternate Email Address:** siddharth.bhatore@research.iiit.ac.in
-* **GitHub Username:** [sbhatore](http://github.com/sbhatore)
-* **Twitter Username:** sbhatore95
-* **IRC Nickname:** sbhatore
-* **College/University:** International Institute of Information Technology, Hyderabad
-* **Subject/Major:** B.Tech and MS by research in Computer Science and Engineering(5 year course)
-
-* **
+***
 ##Project
 
 ###Project Name
