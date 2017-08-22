@@ -1,21 +1,21 @@
 ***
-##Project
+## Project
 
-###Project Name
+### Project Name
 
 Refactor Rails' Cookie Implementation and Improve Signing with Expiry and Purpose
 
-###Project Description
+### Project Description
 
 Current Rails Cookie System does not have a mechanism to expire a cookie, and purpose of a cookie is not defined. Apparently, cookies are not very secure. This project will make the expiry of cookies possible on the server side and also add purpose field for cookies, so that a cookie does only its purpose and can not be used for something it isn't meant for. To make this integration with the current structure, I will also refactor the cookie internals. Upgrade paths will also be taken care of, so that cookies are readable even after a user upgrades his application.
 
-###Why did you choose this idea?
+### Why did you choose this idea?
 
 Amongst all the ideas, this idea matched best with my skills set. I found it really interesting as I researched on it. Every challenge that I faced during the research made me want to do it even more. I also believe that this project will make it easy to generate and store secure cookies.  
 
-###Please describe an outline project architecture or an approach to it
+### Please describe an outline project architecture or an approach to it
 
-#####Problem
+##### Problem
 Expiration of cookies is enforced by the browser, so it is possible for a user to change their expiry time. However, we may want to enforce expiration from server side to some degree. Another problem is that a cookie may be misused in place of another cookie having a different purpose. Therefore, a new parameter needs to be introduced for the purpose of the cookie. Below is a link of the application I have made in Rails demonstrating this problem:
 
 [github link](https://github.com/sbhatore/Demo_app_1)
@@ -26,7 +26,7 @@ Another potential problem is that of Legacy cookies. Cookie format must be updat
 
 A problem exists for the browser session cookies. We want to sign the expiry inside the cookie so that expiry can be enforced on server side. Now, what expiry should we sign for browser session cookies which expire after closing the browser?
 
-#####Approach
+##### Approach
 I will add a purpose parameter for cookies. Then, expiry and purpose of a cookie can be signed or encrypted as part of cookie to solve the problem. This means we will send an encoded Hash containing (value, expiry, purpose) to set cookie as opposed to the current implementation that sends only the encoded "value of the cookie". Thus, we can raise an error if server receives an expired cookie from the browser. Similarly, purpose can be checked too.
 
 Using JSON Web Tokens(JWTs) instead of current representation will help simplify the refactoring problem. A separate class for JWT claims can be made. It will accept payload, and options which will contain purpose and expiry of the cookie and check if the cookies are legit. I will also make a new Abstract class which would be inherited by `SignedCookieJar` and `EncryptedCookieJar` class. This class will take care of serializing headers and claims, checking tampering, etc. Following is a code sample on  how I will like to proceed :
@@ -78,7 +78,7 @@ Till now, we have improved signing and encrypting of cookies, and also taken bas
   
 **Note** : If the proposal goes faster than expected, I will look into other low hanging security concerns of Rails, e.g, verbose server headers concern.
 
-###Why will your proposal benefit Ruby on Rails?
+### Why will your proposal benefit Ruby on Rails?
 
 Today, Cookies are an indispensable part of any website. A web application might require use of cookies which contain sensitive data. Therefore, it becomes very necessary to store this data securely. Through my implementation, Developers will be able to make much more secure cookies than before very easily.
 
@@ -88,45 +88,45 @@ Merged PR(s)
 
 ** *
 
-##Open Source
-###Please describe any previous Open Source development experience
+## Open Source
+### Please describe any previous Open Source development experience
 
 I am new to Open Source development. Ruby on Rails is the first Open Source community I've joined. 
-###Why are you interested in Open Source?
+### Why are you interested in Open Source?
 
 I gained a lot of interest in developing web based applications after I developed some of them as a part of my academic projects. Open Source has opened the doors for me to interact with Web and Software Developers all around the world. I have been learning a lot from other members of the community ever since I joined Ruby on Rails. Open Source has provided me the opportunity to work with other amazing people and to contribute back to the product I love using.
  
  ** *
  
-##Availability
-###How long will the project take? When can you begin?
+## Availability
+### How long will the project take? When can you begin?
 
 The project would take roughly 3 months to complete. I can start the project from 8th May 2015.
-###How much time do you expect to dedicate to this project? (weekly)
+### How much time do you expect to dedicate to this project? (weekly)
 
 I expect to devote **40-45 hours** per week on this project. 
-###Where will you be based during the summer?
+### Where will you be based during the summer?
 
 I will be based in **Hyderabad, India** this summer.
-###What timezone will you be working in and what hours do you plan to work? (so we can best match mentors)
+### What timezone will you be working in and what hours do you plan to work? (so we can best match mentors)
 
 I will be working in [IST](http://en.wikipedia.org/wiki/Indian_Standard_Time)(UTC + 5:30). I mostly work around midnight(say 22:00 - 6:00). However, I am flexible with my schedule and can work anytime of the day. Though not mentioned explicitly, I plan to take Sundays off from my work.
-###Do you have any commitments for the summer? (holidays/work/summer courses)
+### Do you have any commitments for the summer? (holidays/work/summer courses)
 My vacations are from 8th May - 3rd August, during which I don't have any other commitments.
-###Have you ever participated in a previous GSoC? If yes, describe your project.
+### Have you ever participated in a previous GSoC? If yes, describe your project.
 
 No.
-###Have you applied for any other 2014 Summer of Code projects? If yes, which ones?
+### Have you applied for any other 2014 Summer of Code projects? If yes, which ones?
 
 No.
-###Why did you apply for the Google Summer of Code ?
+### Why did you apply for the Google Summer of Code ?
 
 
 Participating in GSoC would be a wonderful opportunity for me to work on an Open Source Project. Working on this project full time would help me hone my developer skills and acquire new skills. The experience I'll gain from this would be immense, which I shall use in my future contributions to Open Source and Projects.         
-###Why did you choose Ruby on Rails as a mentoring organization?
+### Why did you choose Ruby on Rails as a mentoring organization?
 
 I used Ruby on Rails framework to develop an application as one of my academic projects, and I was immediately attracted to it. So, when I was first drawn to Open Source I chose Ruby on Rails. As I went through the source code, I began to appreciate the beauty of RoR. A small piece of code in RoR can work wonders. Its vast community which is constantly active is overwhelming. That's why I would love to contribute to Ruby on Rails.
-###Why do you want to participate and why should Ruby on Rails choose you?
+### Why do you want to participate and why should Ruby on Rails choose you?
 
 I am currently in the 4th semester of my ongoing degree. In these two years, I’ve completed the following technical courses (in chronological order):
 
